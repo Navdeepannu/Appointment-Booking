@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom"
-import { AppContext } from "../context/Context"
-import { useContext } from "react"
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/Context";
+import { useContext } from "react";
 
 const TopDoctors = () => {
-  const navigate = useNavigate()
-  const doctors = useContext(AppContext) // destructure the doctors and get data from context
+  const navigate = useNavigate();
+  const doctors = useContext(AppContext);
 
   //TODO: Handle case when Data is not available
   if (!doctors || doctors.length === 0) {
-    return <p>Loading...</p> // Handle the case where doctors are not available yet
+    return <p>Loading...</p>; // Handle the case where doctor data is not available yet
   }
 
   return (
@@ -23,7 +23,7 @@ const TopDoctors = () => {
         className="w-full grid gap-4 pt-5 gap-y-6 px-3 sm:px-0"
         style={{ gridTemplateColumns: "var(--grid-cols-auto)" }}
       >
-        {doctors.slice(1, 10).map((item, index) => (
+        {doctors.slice(0, 10).map((item, index) => (
           <div
             onClick={() => navigate(`/appointment/${item._id}`)}
             className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] duration-500 transition-all"
@@ -43,14 +43,14 @@ const TopDoctors = () => {
       </div>
       <button
         onClick={() => {
-          navigate(`/doctors`), scrollTo(0, 0)
+          navigate(`/doctors`), scrollTo(0, 0);
         }}
         className="bg-blue-100 cursor-pointer text-gray-600 px-12 py-2 rounded-full mt-10 text-lg"
       >
         More
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default TopDoctors
+export default TopDoctors;

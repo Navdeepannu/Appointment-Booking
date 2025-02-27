@@ -1,40 +1,40 @@
-import appointment_img from "/images/appointment_img.png"
-import header_img from "/images/header_img.png"
-import group_profiles from "/images/group_profiles.png"
-import profile_pic from "/images/profile_pic.png"
-import contact_image from "/images/contact_image.png"
-import about_image from "/images/about_image.png"
-import icon_brand from "/icons/icon_brand.svg"
-import dropdown_icon from "/icons/dropdown_icon.svg"
-import menu_icon from "/icons/menu_icon.svg"
-import cross_icon from "/images/cross_icon.png"
-import chats_icon from "/icons/chats_icon.svg"
-import verified_icon from "/icons/verified_icon.svg"
-import arrow_icon from "/icons/arrow_icon.svg"
-import info_icon from "/icons/info_icon.svg"
-import upload_icon from "/images/upload_icon.png"
-import stripe_logo from "/images/stripe_logo.png"
-import doc1 from "/images/doc1.png"
-import doc2 from "/images/doc2.png"
-import doc3 from "/images/doc3.png"
-import doc4 from "/images/doc4.png"
-import doc5 from "/images/doc5.png"
-import doc6 from "/images/doc6.png"
-import doc7 from "/images/doc7.png"
-import doc8 from "/images/doc8.png"
-import doc9 from "/images/doc9.png"
-import doc10 from "/images/doc10.png"
-import doc11 from "/images/doc11.png"
-import doc12 from "/images/doc12.png"
-import doc13 from "/images/doc13.png"
-import doc14 from "/images/doc14.png"
-import doc15 from "/images/doc15.png"
-import Dermatologist from "/icons/Dermatologist.svg"
-import Gastroenterologist from "/icons/Gastroenterologist.svg"
-import General_physician from "/icons/General_physician.svg"
-import Gynecologist from "/icons/Gynecologist.svg"
-import Neurologist from "/icons/Neurologist.svg"
-import Pediatricians from "/icons/Pediatricians.svg"
+import appointment_img from "/images/appointment_img.png";
+import header_img from "/images/header_img.png";
+import group_profiles from "/images/group_profiles.png";
+import profile_pic from "/images/profile_pic.png";
+import contact_image from "/images/contact_image.png";
+import about_image from "/images/about_image.png";
+import icon_brand from "/icons/icon_brand.svg";
+import dropdown_icon from "/icons/dropdown_icon.svg";
+import menu_icon from "/icons/menu_icon.svg";
+import cross_icon from "/images/cross_icon.png";
+import chats_icon from "/icons/chats_icon.svg";
+import verified_icon from "/icons/verified_icon.svg";
+import arrow_icon from "/icons/arrow_icon.svg";
+import info_icon from "/icons/info_icon.svg";
+import upload_icon from "/images/upload_icon.png";
+import stripe_logo from "/images/stripe_logo.png";
+import doc1 from "/images/doc1.png";
+import doc2 from "/images/doc2.png";
+import doc3 from "/images/doc3.png";
+import doc4 from "/images/doc4.png";
+import doc5 from "/images/doc5.png";
+import doc6 from "/images/doc6.png";
+import doc7 from "/images/doc7.png";
+import doc8 from "/images/doc8.png";
+import doc9 from "/images/doc9.png";
+import doc10 from "/images/doc10.png";
+import doc11 from "/images/doc11.png";
+import doc12 from "/images/doc12.png";
+import doc13 from "/images/doc13.png";
+import doc14 from "/images/doc14.png";
+import doc15 from "/images/doc15.png";
+import Dermatologist from "/icons/Dermatologist.svg";
+import Gastroenterologist from "/icons/Gastroenterologist.svg";
+import General_physician from "/icons/General_physician.svg";
+import Gynecologist from "/icons/Gynecologist.svg";
+import Neurologist from "/icons/Neurologist.svg";
+import Pediatricians from "/icons/Pediatricians.svg";
 
 export const assets = {
   appointment_img,
@@ -53,7 +53,7 @@ export const assets = {
   dropdown_icon,
   upload_icon,
   stripe_logo,
-}
+};
 
 export const specialityData = [
   {
@@ -80,7 +80,7 @@ export const specialityData = [
     speciality: "Gastroenterologist",
     image: Gastroenterologist,
   },
-]
+];
 
 export const doctors = [
   {
@@ -162,7 +162,7 @@ export const doctors = [
     _id: "doc6",
     name: "Dr. Andrew Williams",
     image: doc6,
-    speciality: "Neurologist",
+    speciality: "Gastroenterologist",
     degree: "MBBS",
     experience: "4 Years",
     about:
@@ -297,7 +297,7 @@ export const doctors = [
     _id: "doc15",
     name: "Dr. Amelia Hill",
     image: doc15,
-    speciality: "Dermatologist",
+    speciality: "Gastroenterologist",
     degree: "MBBS",
     experience: "1 Years",
     about:
@@ -308,4 +308,4 @@ export const doctors = [
       line2: "Circle, Ring Road, London",
     },
   },
-]
+];

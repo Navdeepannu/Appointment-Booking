@@ -58,7 +58,7 @@ const About = () => {
       <h2 style={styles.heading}>Contact Us</h2>
       <p style={styles.paragraph}>
         If you have any questions or would like to schedule an appointment, please feel free to 
-        <a href="/contact" style={styles.link}>contact us</a>. We look forward to serving you!
+        <a href="/contact" style={styles.link}> contact us</a>. We look forward to serving you!
       </p>
     </div>
   );
