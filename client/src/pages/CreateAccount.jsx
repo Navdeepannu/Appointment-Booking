@@ -1,35 +1,46 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const CreateAccount = () => {
   const navigate = useNavigate();
 
   // States
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLoginSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(`Email: ${email} \n Password: ${password}`);
-    console.log("Form Submitting... login");
+    console.log(`Name: ${name} \n Email: ${email} \n Password: ${password}`);
+    console.log("Form Submitting...");
 
+    setName("");
     setEmail("");
     setPassword("");
   };
 
   return (
     <form
-      onSubmit={handleLoginSubmit}
+      onSubmit={handleSubmit}
       className="flex justify-center items-center min-h-[80vh]"
     >
       <div className="flex flex-col gap-3 m-auto items-center justify-center p-6 min-w-[340px] sm:min-w-96 border rounded-xl border-gray-200 text-[#5E5E5E] text-sm shadow-2xl">
-        <h2 className="text-2xl font-semibold">Login</h2>
+        <h2 className="text-2xl font-semibold">Create an Account</h2>
         <p className="font-light text-sm text-center">
-          Please log in to book an appointment
+          Please sign up to book an appointment
         </p>
 
         <div className="w-full flex flex-col items-center">
+          <label className="w-full text-left">Full Name</label>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            required
+            className="border border-[#DADADA] rounded w-full p-2 mt-1 mb-2"
+          />
+
           <label className="w-full text-left">Email</label>
           <input
             value={email}
@@ -50,20 +61,20 @@ const Login = () => {
 
           <button
             type="submit"
-            className="bg-primary text-white w-full py-2 my-2 rounded-md text-base"
+            className="bg-primary text-white w-full py-2 my-2 rounded-md text-base cursor-pointer"
           >
-            Login
+            Create Account
           </button>
 
           <p>
-            Create an new account?{" "}
+            Already have an account?{" "}
             <span
               onClick={() => {
-                navigate("/create-account");
+                navigate("/login");
               }}
               className="text-blue-700 cursor-pointer underline"
             >
-              Click here
+              Login here
             </span>
           </p>
         </div>
@@ -72,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default CreateAccount;

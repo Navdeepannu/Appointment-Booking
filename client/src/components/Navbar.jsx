@@ -1,12 +1,12 @@
-import { NavLink, useNavigate } from "react-router-dom"
-import { assets } from "../assets/assets"
-import { useState } from "react"
+import { NavLink, useNavigate } from "react-router-dom";
+import { assets } from "../assets/assets";
+import { useState } from "react";
 
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [showMenu, setShowMenu] = useState(false) // TODO: show Menu option
-  const [token, setToken] = useState(true) // User is logged in if true
+  const [showMenu, setShowMenu] = useState(false); // TODO: show Menu option
+  const [token, setToken] = useState(true); // User is logged in if true
 
   return (
     <div className="flex items-center justify-between text-sm py-2 mb-5 border-b border-b-gray-400">
@@ -53,14 +53,14 @@ const Navbar = () => {
               <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4 hover:text-black">
                 <p
                   onClick={() => {
-                    navigate(`/my-profile`)
+                    navigate(`/my-profile`);
                   }}
                 >
                   My Profile
                 </p>
                 <p
                   onClick={() => {
-                    navigate(`/my-appointments`)
+                    navigate(`/my-appointments`);
                   }}
                 >
                   My Appointments
@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
         ) : (
           <button
-            onClick={() => navigate(`/login`)}
+            onClick={() => navigate(`/create-account`)}
             className="bg-primary cursor-pointer text-white px-8 py-3 rounded-full font-light hidden md:block hover:bg-sky-500"
           >
             Create Account
@@ -79,7 +79,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
