@@ -1,5 +1,5 @@
-import { specialityData } from "../assets/assets"
-import { Link } from "react-router-dom"
+import { specialityData } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const SpecialityMenu = () => {
   return (
@@ -19,7 +19,7 @@ const SpecialityMenu = () => {
           <Link
             // Scroll To top and redirect to speciality doctor page to book appointment
             onClick={() => {
-              scrollTo(0, 0)
+              scrollTo(0, 0);
             }}
             key={index}
             to={`/doctors/${item.speciality}`}
@@ -35,7 +35,7 @@ const SpecialityMenu = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SpecialityMenu
+export default SpecialityMenu;

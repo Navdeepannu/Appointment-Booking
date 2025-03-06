@@ -14,6 +14,7 @@ import arrow_icon from "/icons/arrow_icon.svg";
 import info_icon from "/icons/info_icon.svg";
 import upload_icon from "/images/upload_icon.png";
 import stripe_logo from "/images/stripe_logo.png";
+import upload_area from "/images/upload_area.png";
 import doc1 from "/images/doc1.png";
 import doc2 from "/images/doc2.png";
 import doc3 from "/images/doc3.png";
@@ -53,7 +54,9 @@ export const assets = {
   dropdown_icon,
   upload_icon,
   stripe_logo,
+  upload_area,
 };
+
 
 export const specialityData = [
   {

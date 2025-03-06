@@ -1,18 +1,7 @@
-import { useRef } from "react"
-import { assets } from "../assets/assets"
+import { assets } from "../assets/assets";
+import PropTypes from "prop-types";
 
-const Header = () => {
-  // TODO: useRef scroll not working
-  const specialityMenuRef = useRef(null)
-
-  const scrollToSpecialityMenu = () => {
-    console.log("Button Clicked!")
-    specialityMenuRef.current?.scrollIntoView({
-      behaviour: "smooth",
-    })
-    console.log(specialityMenuRef.current)
-  }
-
+const Header = ({ scrollToSpecialityMenu }) => {
   return (
     <div className="flex flex-col md:flex-row flex-wrap bg-primary rounded-lg px-6 md:px-10 lg:px-20 text-white">
       {/* Left Side */}
@@ -30,12 +19,11 @@ const Header = () => {
 
         {/* scroll page to speciality menu */}
         <button
-          href="#speciality"
           onClick={scrollToSpecialityMenu}
           className="flex cursor-pointer items-center gap-2 bg-white rounded-full px-8 py-3 text-gray-600 text-sm md:m-0 m-auto hover:scale-105 transition-all duration-300"
         >
           Book Appointment
-          <img className="w-3" src={assets.arrow_icon} />
+          <img className="w-3" src={assets.arrow_icon} alt="arrow_icon" />
         </button>
       </div>
 
@@ -48,7 +36,11 @@ const Header = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+Header.propTypes = {
+  scrollToSpecialityMenu: PropTypes.func.isRequired,
+};
+
+export default Header;
