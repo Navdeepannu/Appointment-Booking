@@ -1,5 +1,5 @@
 import { assets } from "../assets/assets";
-import PropTypes from "prop-types";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Header = ({ scrollToSpecialityMenu }) => {
   return (
@@ -23,7 +23,7 @@ const Header = ({ scrollToSpecialityMenu }) => {
           className="flex cursor-pointer items-center gap-2 bg-white rounded-full px-8 py-3 text-gray-600 text-sm md:m-0 m-auto hover:scale-105 transition-all duration-300"
         >
           Book Appointment
-          <img className="w-3" src={assets.arrow_icon} alt="arrow_icon" />
+          <FaArrowRight />
         </button>
       </div>
 
@@ -33,14 +33,10 @@ const Header = ({ scrollToSpecialityMenu }) => {
           className="w-full md:absolute bottom-0 h-auto rounded-lg"
           src={assets.header_img}
           alt="header_img"
-        />
+        /> 
       </div>
     </div>
   );
-};
-
-Header.propTypes = {
-  scrollToSpecialityMenu: PropTypes.func.isRequired,
 };
 
 export default Header;

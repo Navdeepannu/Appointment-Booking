@@ -1,15 +1,15 @@
-import PropTypes from "prop-types"
-import { doctors } from "../assets/assets"
-import { AppContext } from "./Context"
+import PropTypes from "prop-types";
+import { doctors } from "../assets/assets";
+import { AppContext } from "./Context";
 
 // Context Provider
 const AppContextProvider = ({ children }) => {
   const value = {
     doctors,
-  }
+  };
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
-}
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
 
 AppContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
@@ -22,6 +22,6 @@ AppContextProvider.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
-}
+};
 
-export default AppContextProvider
+export default AppContextProvider;

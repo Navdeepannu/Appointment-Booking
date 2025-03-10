@@ -5,22 +5,20 @@ import TopDoctors from "../components/TopDoctors";
 import { useRef } from "react";
 
 const Home = () => {
-  const specialityRef = useRef(null);
+  const specialityMenuRef = useRef();
 
-  const scrollToSpcialityMenu = () => {
-    console.log("Button Clicked!");
-    specialityRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-    console.log(specialityRef.current.scrollIntoView);
+  const scrollToSpecialityMenu = () => {
+    if (specialityMenuRef.current) {
+      specialityMenuRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <div>
-      <Header scrollToSpcialityMenu={scrollToSpcialityMenu} />
-      <SpecialityMenu ref={specialityRef} />
+      <Header scrollToSpecialityMenu={scrollToSpecialityMenu} />
+      <SpecialityMenu ref={specialityMenuRef} />
       <TopDoctors />
     </div>
   );
