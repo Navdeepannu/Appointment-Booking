@@ -1,0 +1,49 @@
+# Ignore node_modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore build files
+dist/
+build/
+.tmp/
+
+# Ignore logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
+
+# Ignore database files
+*.sqlite
+*.sqlite-journal
+*.db
+
+# Ignore IDE/Editor files
+.vscode/
+.idea/
+*.swp
+
+# Ignore dependency folders
+node_modules/
+bower_components/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore TypeScript cache
+*.tsbuildinfo
+
+# Ignore testing files
+coverage/
+jest/
