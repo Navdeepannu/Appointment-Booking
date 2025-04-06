@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/Context";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 const CreateAccount = () => {
+  const { backendUrl, token, setToken } = useContext(AppContext);
+
   const navigate = useNavigate();
 
   // States
@@ -9,10 +14,26 @@ const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(`Name: ${name} \n Email: ${email} \n Password: ${password}`);
+    try {
+      const { data } = await axios.post(backendUrl + "/api/user/register", {
+        name,
+        password,
+        email,
+      });
+
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log("Form Submitting...");
 
     setName("");

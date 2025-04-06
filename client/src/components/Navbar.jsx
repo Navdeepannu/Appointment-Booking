@@ -1,12 +1,19 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
-import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/Context";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { token, setToken, userData } = useContext(AppContext);
 
-  const [showMenu, setShowMenu] = useState(false); // TODO: show Menu option
-  const [token, setToken] = useState(true); // User is logged in if true
+  //TODO:for mobile view const [showMenu, setShowMenu] = useState(false);
+
+  // Logout Function
+  const logout = () => {
+    setToken(false);
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className="flex items-center justify-between text-sm py-2 mb-5 border-b border-b-gray-400">
@@ -45,7 +52,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2 cursor-pointer group relative ">
             <img
               className="w-10 rounded-full"
-              src={assets.profile_pic}
+              src={userData.image}
               alt="profileImage"
             />
             <img className="w-3" src={assets.dropdown_icon} />
@@ -65,7 +72,7 @@ const Navbar = () => {
                 >
                   My Appointments
                 </p>
-                <p onClick={() => setToken(false)}>Log Out</p>
+                <p onClick={logout}>Log Out</p>
               </div>
             </div>
           </div>

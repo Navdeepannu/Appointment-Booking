@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const TopDoctors = () => {
   const navigate = useNavigate();
-  const doctors = useContext(AppContext);
+  const {doctors} = useContext(AppContext);
 
   //TODO: Handle case when Data is not available
   if (!doctors || doctors.length === 0) {

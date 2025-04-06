@@ -2,8 +2,10 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/Context";
 
+import { toast, ToastContainer } from "react-toastify";
 import { GoDash } from "react-icons/go";
 import { FaInfoCircle } from "react-icons/fa";
+import axios from "axios";
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const Appointment = () => {
 
   // get doctors id
   const { docId } = useParams();
-  const doctors = useContext(AppContext);
+  const { doctors, backendUrl, token, getDoctorData } = useContext(AppContext);
 
   // Days of week
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
@@ -67,10 +69,28 @@ const Appointment = () => {
           minute: "2-digit",
         });
 
-        timeSlots.push({
-          datetime: new Date(currentDate),
-          time: formattedTime,
-        });
+        // Update the slot after booked
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
+
+        const slotDate = `${day}-${month}-${year}`;
+        const slotTime = formattedTime;
+
+        // Check of the slot date is booked and in that date which time is booked
+        const isSlotAvailable =
+          doctorInfo.slots_booked?.[slotDate] &&
+          doctorInfo.slots_booked[slotDate].includes(slotTime)
+            ? false
+            : true;
+
+        if (isSlotAvailable) {
+          // add slot to array
+          timeSlots.push({
+            datetime: new Date(currentDate),
+            time: formattedTime,
+          });
+        }
 
         // Increment current time by 30 minutes
         currentDate.setMinutes(currentDate.getMinutes() + 30);
@@ -82,7 +102,9 @@ const Appointment = () => {
   };
 
   useEffect(() => {
-    getAvailableSlots();
+    if (doctorInfo) {
+      getAvailableSlots();
+    }
   }, [doctorInfo]);
 
   // for debugging
@@ -90,8 +112,50 @@ const Appointment = () => {
     console.log(docSlots);
   }, [docSlots]);
 
+  const bookAppointment = async () => {
+    if (!token) {
+      toast.warn("Login to book appointment.");
+      setTimeout(() => navigate("/login"), 2000);
+      return;
+    }
+
+    try {
+      const date = docSlots[slotIndex][0].datetime;
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      const slotDate = day + "-" + month + "-" + year;
+      // console.log(slotDate);
+
+      const { data } = await axios.post(
+        `${backendUrl}/api/user/book-appointment`,
+        { docId, slotDate, slotTime },
+        { headers: { token } }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        await getDoctorData();
+
+        // navigate to my appointments
+        setTimeout(() => {
+          getAvailableSlots();
+          navigate("/my-appointments");
+        }, 3000);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div>
+      <ToastContainer />
       {doctorInfo && doctorInfo !== undefined ? (
         <div className="flex flex-col sm:flex-row gap-4">
           <div>
@@ -132,7 +196,7 @@ const Appointment = () => {
             to explore all our doctors?
           </p>
           <button
-            onClick={() => navigateToAllDoctors()} // Replace with your navigation function
+            onClick={() => navigateToAllDoctors()} // Replace with navigation function
             className="bg-primary text-white px-8 py-3 rounded-full font-medium tracking-wide shadow-md hover:bg-primary-dark transition-all duration-300"
           >
             View All Doctors
@@ -179,9 +243,7 @@ const Appointment = () => {
         </div>
 
         <button
-          onClick={() => {
-            console.log("Booked..");
-          }}
+          onClick={bookAppointment}
           className="text-light text-sm border border-gray-200 shadow-sm rounded-full px-14 py-3 bg-primary mt-4 text-white cursor-pointer"
         >
           Book appointment

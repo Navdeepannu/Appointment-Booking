@@ -1,28 +1,57 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AppContext } from "../context/Context";
+
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
+  const { backendUrl, token, setToken } = useContext(AppContext);
+
   const navigate = useNavigate();
 
   // States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(`Email: ${email} \n Password: ${password}`);
+    try {
+      const { data } = await axios.post(backendUrl + "/api/user/login", {
+        password,
+        email,
+      });
+
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log("Form Submitting... login");
 
     setEmail("");
     setPassword("");
   };
 
+  // navigate to home page after login
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
+
   return (
     <form
       onSubmit={handleLoginSubmit}
       className="flex justify-center items-center min-h-[80vh]"
     >
+      <ToastContainer />
       <div className="flex flex-col gap-3 m-auto items-center justify-center p-6 min-w-[340px] sm:min-w-96 border rounded-xl border-gray-200 text-[#5E5E5E] text-sm shadow-2xl">
         <h2 className="text-2xl font-semibold">Login</h2>
         <p className="font-light text-sm text-center">
@@ -50,7 +79,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="bg-primary text-white w-full py-2 my-2 rounded-md text-base"
+            className="bg-primary text-white w-full py-2 my-2 rounded-md text-base cursor-pointer"
           >
             Login
           </button>

@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"; 
+import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/Context";
 
 const Doctors = () => {
@@ -11,7 +11,7 @@ const Doctors = () => {
   const { speciality } = useParams();
 
   // get doctors data
-  const doctors = useContext(AppContext);
+  const { doctors } = useContext(AppContext);
 
   // Use useCallback to memoize applyFilter
   const applyFilter = useCallback(() => {
@@ -34,9 +34,9 @@ const Doctors = () => {
         <div className="flex flex-col gap-4 text-sm text-gray-600">
           <p
             onClick={() =>
-              speciality === "General physician"
+              speciality === "General Physician"
                 ? navigate("/doctors")
-                : navigate("/doctors/General physician")
+                : navigate("/doctors/General Physician")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "General physician" ? " bg-indigo-100 text-black" : ""}`}
           >
