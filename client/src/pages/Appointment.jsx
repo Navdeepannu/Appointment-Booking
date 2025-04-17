@@ -187,6 +187,17 @@ const Appointment = () => {
                 Appointment fee: ${doctorInfo.fees}
               </span>
             </p>
+
+            <div className="flex items-center gap-2 text-sm text-center">
+              <p
+                className={`w-2 h-2 ${doctorInfo.available ? "bg-green-500" : "bg-red-600"} rounded-full`}
+              ></p>
+              <p
+                className={`${doctorInfo.available ? "text-green-500" : "text-red-600"}`}
+              >
+                {doctorInfo.available ? "Available" : "Not Aailable"}
+              </p>
+            </div>
           </div>
         </div>
       ) : (

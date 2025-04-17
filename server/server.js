@@ -2,8 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
-// import doctorRoutes from "./routes/doctor.js";
-// import bookingRoutes from "./routes/booking.js"; // Import booking routes
 import userRouter from "./routes/user.js";
 import path from "path";
 
@@ -28,10 +26,6 @@ app.use("/api/doctor/", doctorRouter);
 app.use("/api/user", userRouter); // Use user routes
 
 app.use("/uploads", express.static(path.join("server/public/uploads")));
-
-// app.use("/api/doctors", doctorRoutes); // Use doctor routes
-// app.use("/api/bookings", bookingRoutes); // Use booking routes
-
 
 // Health check route
 app.get("/", (req, res) => {

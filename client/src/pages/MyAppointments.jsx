@@ -4,6 +4,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+import { MdCancel, MdDone } from "react-icons/md";
+
 const MyAppointments = () => {
   const navigate = useNavigate();
   const { backendUrl, token, getDoctorData } = useContext(AppContext);
@@ -128,7 +130,7 @@ const MyAppointments = () => {
                 </div>
               </div>
               <div className="cursor-pointer">
-                {!doctor.cancelled && (
+                {!doctor.cancelled && !doctor.isCompleted && (
                   <button
                     className="text-rose-700 p-2 rounded-md hover:bg-rose-700 hover:text-white duration-400 transition-all tracking-wide cursor-pointer border font-light"
                     onClick={() => cancelAppointment(doctor._id)}
@@ -136,9 +138,18 @@ const MyAppointments = () => {
                     Cancel Appointment
                   </button>
                 )}
-                {doctor.cancelled && (
-                  <button className="bg-rose-700 text-gray-100 rounded-lg p-2 cursor-not-allowed ">
-                    Appointment Cancelled
+                {doctor.cancelled && !doctor.isCompleted && (
+                  <button className="bg-rose-700 text-gray-100 rounded-lg p-2 cursor-not-allowed flex items-center gap-1">
+                    Cancelled <MdCancel size={20} />
+                  </button>
+                )}
+                {doctor.isCompleted && (
+                  <button className="text-gray-700 rounded-lg p-2 cursor-not-allowed border border-green-600 flex items-center gap-1">
+                    Completed{" "}
+                    <MdDone
+                      size={20}
+                      className="rounded-full px-0.5 text-white bg-green-600"
+                    />
                   </button>
                 )}
               </div>

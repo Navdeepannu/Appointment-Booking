@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/Context";
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const CreateAccount = () => {
-  const { backendUrl, token, setToken } = useContext(AppContext);
+  const { backendUrl, setToken } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ const CreateAccount = () => {
       });
 
       if (data.success) {
+        toast.success(data.message);
         localStorage.setItem("token", data.token);
         setToken(data.token);
       } else {
@@ -32,13 +33,12 @@ const CreateAccount = () => {
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message || "Failed to create an account.");
+    } finally {
+      setName("");
+      setEmail("");
+      setPassword("");
     }
-
-    console.log("Form Submitting...");
-
-    setName("");
-    setEmail("");
-    setPassword("");
   };
 
   return (
