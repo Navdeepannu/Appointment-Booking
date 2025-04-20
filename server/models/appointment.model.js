@@ -11,6 +11,7 @@ const appointmentSchema = new mongoose.Schema(
     amount: { type: Number, required: true },
     date: { type: Number, reuqired: true },
     cancelled: { type: Boolean, default: false },
+    isCompleted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
