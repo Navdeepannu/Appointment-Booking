@@ -6,14 +6,10 @@ import contact_image from "/images/contact_image.png";
 import about_image from "/images/about_image.png";
 import icon_brand from "/icons/icon_brand.svg";
 import dropdown_icon from "/icons/dropdown_icon.svg";
-import menu_icon from "/icons/menu_icon.svg";
 import cross_icon from "/images/cross_icon.png";
-import chats_icon from "/icons/chats_icon.svg";
-import verified_icon from "/icons/verified_icon.svg";
 import arrow_icon from "/icons/arrow_icon.svg";
 import info_icon from "/icons/info_icon.svg";
 import upload_icon from "/images/upload_icon.png";
-import stripe_logo from "/images/stripe_logo.png";
 import upload_area from "/images/upload_area.png";
 import doc1 from "/images/doc1.png";
 import doc2 from "/images/doc2.png";
@@ -42,21 +38,16 @@ export const assets = {
   header_img,
   group_profiles,
   icon_brand,
-  chats_icon,
-  verified_icon,
   info_icon,
   profile_pic,
   arrow_icon,
   contact_image,
   about_image,
-  menu_icon,
   cross_icon,
   dropdown_icon,
   upload_icon,
-  stripe_logo,
   upload_area,
 };
-
 
 export const specialityData = [
   {

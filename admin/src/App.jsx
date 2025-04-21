@@ -29,7 +29,7 @@ function App() {
         <div className="flex flex-start bg-[#f3f6fb]">
           <Sidebar />
           <Routes>
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/admin-dashboard" element={<Dashboard />} />
             <Route path="/all-appointments" element={<AllAppointment />} />
             <Route path="/add-doctor" element={<AddDoctor />} />
