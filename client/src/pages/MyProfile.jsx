@@ -52,11 +52,7 @@ const ProfilePage = () => {
           <label htmlFor="image">
             <div className="inline-block cursor-pointer relative">
               <img
-                src={
-                  image
-                    ? URL.createObjectURL(image)
-                    : userData.image
-                }
+                src={image ? URL.createObjectURL(image) : userData.image}
                 alt="upload area"
                 className="w-36 rounded-md cursor-pointer opacity-90"
               />
@@ -185,14 +181,14 @@ const ProfilePage = () => {
 
             <p>Date of birth: </p>
             {isEdit ? (
-              <input 
-                type="date" 
+              <input
+                type="date"
                 value={userData.dob}
                 onChange={(e) =>
                   setUserData((prev) => ({ ...prev, dob: e.target.value }))
                 }
-                required 
-                className="max-w-30 bg-gray-100" 
+                required
+                className="max-w-30 bg-gray-100"
               />
             ) : (
               <p className="text-gray-900 ">{userData.dob}</p>
