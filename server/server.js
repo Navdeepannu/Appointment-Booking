@@ -14,7 +14,15 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // To parse JSON request bodies
-app.use(cors()); // To handle CORS issues
+app.use(
+  cors({
+    origin: [
+      "https://appointment-booking-li4k.vercel.app",
+      "https://appointment-booking-li4k-admin.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 // Connect to MongoDB
 connectDB();
@@ -29,7 +37,7 @@ app.use("/uploads", express.static(path.join("server/public/uploads")));
 
 // Health check route
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("Server is working");
 });
 
 const PORT = process.env.PORT || 8000;
