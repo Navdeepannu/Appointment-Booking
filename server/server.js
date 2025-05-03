@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "https://appointment-booking-li4k.vercel.app",
-      "https://appointment-booking-ofpl20gvf-navdeepannus-projects.vercel.app/",
+      "https://appointment-booking-app-ashy.vercel.app",
     ],
     credentials: true,
   })
