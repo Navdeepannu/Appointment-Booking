@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { useContext } from "react";
 import { AppContext } from "../context/Context";
@@ -13,6 +13,10 @@ const Navbar = () => {
   const logout = () => {
     setToken(false);
     localStorage.removeItem("token");
+  };
+
+  const openAdminPannel = () => {
+    window.open("https://appointment-booking-app-ashy.vercel.app/", "_blank");
   };
 
   return (
@@ -48,8 +52,14 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-4">
+        <button
+          className="px-5 py-2 rounded-full border-2 border-primary shadow-xl shadow-gray-300 hover:bg-neutral-50 duration-400 transition-all cursor-pointer hover:translate-y-1"
+          onClick={openAdminPannel}
+        >
+          Admin Pannel
+        </button>
         {token ? (
-          <div className="flex items-center gap-2 cursor-pointer group relative ">
+          <div className="flex items-center gap-2 cursor-pointer group relative">
             <img
               className="w-10 rounded-full"
               src={userData.image}

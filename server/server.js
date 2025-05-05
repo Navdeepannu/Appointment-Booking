@@ -17,6 +17,8 @@ app.use(express.json()); // To parse JSON request bodies
 app.use(
   cors({
     origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
       "https://appointment-booking-li4k.vercel.app",
       "https://appointment-booking-app-ashy.vercel.app",
     ],
